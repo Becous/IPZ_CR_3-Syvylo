@@ -81,6 +81,7 @@ fun Rows(){
             ItemRow(
                 title = R.string.column_1_title,
                 disc = R.string.column_1_disc,
+                backgroundColor = MaterialTheme.colorScheme.onError,
                 modifier = Modifier
                     .size(height = 120.dp, width = 220.dp)
                     .padding(15.dp)
@@ -90,6 +91,7 @@ fun Rows(){
             ItemRow(
                 title = R.string.column_2_title,
                 disc = R.string.column_2_disc,
+                backgroundColor = MaterialTheme.colorScheme.onPrimary,
                 modifier = Modifier
                     .size(height = 120.dp, width = 220.dp)
                     .padding(15.dp)
@@ -103,6 +105,7 @@ fun Rows(){
 fun ItemRow(
     @StringRes title: Int,
     @StringRes disc: Int,
+    backgroundColor: Color,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -112,7 +115,7 @@ fun ItemRow(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
-                .background(color = Color.Yellow)
+                .background(color = backgroundColor)
                 .fillMaxWidth()
         ){
             Image(
