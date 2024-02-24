@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">IPZ_KR_3_Syvylo_Roman</string>
+    <string name="column_1_title">Title 1 column</string>
+    <string name="column_2_title">Title 2 column</string>
+    <string name="column_1_disc">Disc 1 column</string>
+    <string name="column_2_disc">Disc 2 column</string>
 </resources>

@@ -3,6 +3,7 @@ package ua.edu.lntu.cw3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ua.edu.lntu.cw3.ui.theme.IPZ_KR_3_Syvylo_RomanTheme
@@ -77,6 +79,8 @@ fun Rows(){
     LazyRow(){
         item{
             ItemRow(
+                title = R.string.column_1_title,
+                disc = R.string.column_1_disc,
                 modifier = Modifier
                     .size(height = 120.dp, width = 220.dp)
                     .padding(15.dp)
@@ -84,6 +88,8 @@ fun Rows(){
         }
         item{
             ItemRow(
+                title = R.string.column_2_title,
+                disc = R.string.column_2_disc,
                 modifier = Modifier
                     .size(height = 120.dp, width = 220.dp)
                     .padding(15.dp)
@@ -94,7 +100,11 @@ fun Rows(){
 
 
 @Composable
-fun ItemRow(modifier: Modifier = Modifier) {
+fun ItemRow(
+    @StringRes title: Int,
+    @StringRes disc: Int,
+    modifier: Modifier = Modifier
+) {
     Card(
         shape =  RoundedCornerShape(25.dp),
         modifier = modifier){
@@ -115,9 +125,9 @@ fun ItemRow(modifier: Modifier = Modifier) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(15.dp)) {
-                Text(text = "some text")
+                Text(text = stringResource(id = title))
                 Spacer(modifier = Modifier.height(16.dp))
-                Text("some little text")
+                Text(stringResource(id = disc))
             }
 
         }
@@ -128,6 +138,6 @@ fun ItemRow(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     IPZ_KR_3_Syvylo_RomanTheme {
-        App()
+        Rows()
     }
 }
