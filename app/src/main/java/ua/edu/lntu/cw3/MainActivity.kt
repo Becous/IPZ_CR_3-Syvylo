@@ -13,11 +13,16 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,17 +43,40 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ItemColumn()
+                    App()
                 }
             }
+        }
+    }
+}
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun App(){
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(title = {
+                Text(text = "Contact list")
+            })
+        }
+    ) {
+        paddingValues ->
+        Column(
+            modifier = Modifier.padding(paddingValues)
+        ) {
+            ItemRow(
+                modifier = Modifier
+                    .size(height = 120.dp, width = 240.dp)
+                    .padding(15.dp)
+            )
         }
     }
 }
 
 
 
+
 @Composable
-fun ItemColumn(modifier: Modifier = Modifier) {
+fun ItemRow(modifier: Modifier = Modifier) {
     Card(
         shape =  RoundedCornerShape(25.dp),
         modifier = modifier){
@@ -63,6 +91,7 @@ fun ItemColumn(modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.image_1),
                 contentDescription = null,
                 modifier = Modifier
+                    .size(60.dp)
                     .clip(RoundedCornerShape(50.dp))
             )
             Column(
@@ -77,10 +106,10 @@ fun ItemColumn(modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showSystemUi = true)
 @Composable
 fun GreetingPreview() {
     IPZ_KR_3_Syvylo_RomanTheme {
-        ItemColumn()
+        App()
     }
 }
