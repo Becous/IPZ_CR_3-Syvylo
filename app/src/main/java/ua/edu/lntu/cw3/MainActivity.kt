@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -59,19 +61,36 @@ fun App(){
         }
     ) {
         paddingValues ->
-        Column(
-            modifier = Modifier.padding(paddingValues)
-        ) {
-            ItemRow(
-                modifier = Modifier
-                    .size(height = 120.dp, width = 240.dp)
-                    .padding(15.dp)
-            )
+        LazyColumn(
+            Modifier.padding(paddingValues)
+        ){
+            items(10){
+                Rows()
+            }
         }
     }
 }
 
 
+@Composable
+fun Rows(){
+    LazyRow(){
+        item{
+            ItemRow(
+                modifier = Modifier
+                    .size(height = 120.dp, width = 220.dp)
+                    .padding(15.dp)
+            )
+        }
+        item{
+            ItemRow(
+                modifier = Modifier
+                    .size(height = 120.dp, width = 220.dp)
+                    .padding(15.dp)
+            )
+        }
+    }
+}
 
 
 @Composable
